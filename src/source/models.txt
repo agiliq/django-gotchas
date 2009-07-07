@@ -1,0 +1,9 @@
+===================
+Models
+===================
+
+Not adding a max_length to models.CharField
+----------------------------------------------
+
+Not handling for ModelClass.DoesNotExist and ModelClass.MultipleObjectsReturned
+---------------------------------------------------------------------------------

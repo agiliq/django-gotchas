@@ -1,0 +1,32 @@
+===================
+Forms
+===================
+
+request.POST binding to wrong parameter in forms
+---------------------------------------------------
+
+This is a common idiom in a view.::
+
+    def view_func(request):
+        form = FormClass()
+        if request.method == 'POST':
+            form=FormClass(request.POST)#Gotcha
+            ....
+        payload = {'form':form}
+        return render_to_response(...)
+        
+Now  supoose we edited our form class to:
+
+    class FormClass(forms.Form):
+        def __init__(self, user = None, *args, **kwargs):
+            .....
+            
+request.POST will bind to user, when we meant to be the POST data.
+
+Solution:
+
+Rewrite the gotcha line as
+    
+    form=FormClass(data=request.POST)
+
+    

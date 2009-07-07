@@ -1,0 +1,22 @@
+===================
+Urls
+===================
+
+Url patterns catching unexpected patterns
+
+Consider these patterns,
+
+    ...
+    url('edit/', edit_view, )
+    url('edit/bulk/', edit_bulk_view)
+    ...
+    
+So when you try to go to 'edit/bulk/' you would get the edit_view, as
+'edit/' pattern matched 'edit/bulk/'.
+
+Solution: Always use the smallest pattern which matches.
+
+    ...
+    url('^edit/$', edit_view, )
+    url('^edit/bulk/$', edit_bulk_view)
+    ...
