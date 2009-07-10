@@ -28,5 +28,14 @@ Solution:
 Rewrite the gotcha line as
     
     form=FormClass(data=request.POST)
+    
+
+Using form.cleaned_data before calling form.is_valid
+-------------------------------------------------------
+
+Even if you are sure your form passes validation, you still nedd to call
+`is_valid`. `form.cleaned_data` is calculated after `form.is_valid` is called,
+which you probably are using in your `form.save()`.
+
 
     

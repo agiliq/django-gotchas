@@ -7,3 +7,15 @@ Not adding a max_length to models.CharField
 
 Not handling for ModelClass.DoesNotExist and ModelClass.MultipleObjectsReturned
 ---------------------------------------------------------------------------------
+
+Overriding .save()
+------------------------
+Most of the times you would be using  `model_obj.save()` without any parameters,
+so you may override `.save` as::
+
+    def save(self):
+        ...
+        super(ModelClass, self).save()
+        
+This would work, until, `.save` is called with a parameter. For example,
+when you use `get_or_create`, `.save` is called with as `.save(force_insert = True)
