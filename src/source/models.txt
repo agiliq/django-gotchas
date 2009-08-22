@@ -4,9 +4,24 @@ Models
 
 Not adding a max_length to models.CharField
 ----------------------------------------------
+If you do not add a max_lenth to char fields your model will not validate.
+
+Solution:
+
+Add a max_length. If you want a field with unlimited length, use a TextField.
 
 Not handling for ModelClass.DoesNotExist and ModelClass.MultipleObjectsReturned
 ---------------------------------------------------------------------------------
+
+If you are doing a `ModelClass.objects.get(this = that) unless you are doing it
+for a unique key, this has a potential to raise `ModelClass.MultipleObjectsReturned`
+and `ModelClass.DoesNotExist`. This needs to be handled.
+
+Solution:
+If one of the query crteria is on an unique field, put it in a `try: .. except ModelClass.DoesNotExits:..`.
+If there criteria has no unique field, handle both `DoesNotExist` and `MultipleObjectsReturned`.
+In a view function, use django.shortcuts.get_object_or_404(ModelClass, criteria = criteria)
+ 
 
 Overriding .save()
 ------------------------
@@ -18,4 +33,12 @@ so you may override `.save` as::
         super(ModelClass, self).save()
         
 This would work, until, `.save` is called with a parameter. For example,
-when you use `get_or_create`, `.save` is called with as `.save(force_insert = True)
+when you use `get_or_create`, `.save` is called with as `.save(force_insert = True)`,
+which will fail.
+
+Solution:
+Override save as::
+
+    def save(self, *args, **kwargs):
+        ...
+        super(ModelClass, self).save(*args, **kwargs)

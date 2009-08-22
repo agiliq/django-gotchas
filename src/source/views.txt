@@ -5,4 +5,47 @@ Views
 
 Not returning a HttpResponse
 ---------------------------------
+This is very common, but Django complains loudly. So very obvious and easy to fix.
 
+Solution:
+Always return HttpResponse via any of the mechanisms.
+
+Not including RequestContext
+------------------------------
+
+Sometime you mean this::
+
+    return render_to_response(request, payload, RequestContext(request))
+
+But write::
+
+    return render_to_response(request, payload,)
+    
+So any of your data from context processors would not be available. Eg, `media_url`.
+
+Solution:
+
+If you must use this, always be sure why you are doing it this way.
+
+    return render_to_response(request, payload,)
+    
+Filtering on id
+-------------------
+
+A common view function:
+
+    def edit_post(request, id):
+        Post.objects.get(id = id)
+        
+`id` is a builtin in Python and overriding that is probably a bad idea. But this
+happens commonly as Django names the tables PK `id`.
+
+Solution:
+
+Name the variables descriptively or always use `pk`
+
+    def edit_post(request, post_id):
+        Post.objects.get(pk = post_id)
+
+
+    
