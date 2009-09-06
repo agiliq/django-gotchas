@@ -42,3 +42,39 @@ Override save as::
     def save(self, *args, **kwargs):
         ...
         super(ModelClass, self).save(*args, **kwargs)
+        
+Trying qs.get('foo') 
+------------------------
+
+Django `.get` and '.filter` takes only keywords argument. So `ModelClass.objects.get(foo)`
+gives an error. Similarly creating objects as `ModelClass(foo=foo)` takes only
+keyword arguments.
+
+Solution:
+Use keyword arguments.
+
+Trying to use an stale object
+------------------------------------
+What is wrong with code?::
+
+    def foo(req):
+      obj =ModelClass.objects.get(pk = 5)
+      magic(obj.pk)
+      payload{'obj':obj} 
+      return render_to_response(template, payload, ..)
+
+Django does not have object identity, hence any change made to the database
+within obj within magic wont be available in the function.
+
+Solution:
+There is no easy solution to it, but you can keep yourself, but you can keep
+youself from being bitten by this behaviour. a. Pull objects close to
+their use. Keep track of when an used object is updated and pull them again from
+the database if updated.
+    
+
+
+
+
+
+

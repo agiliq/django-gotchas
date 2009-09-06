@@ -47,5 +47,20 @@ Name the variables descriptively or always use `pk`
     def edit_post(request, post_id):
         Post.objects.get(pk = post_id)
 
+Passing `locals()` to templates
+----------------------------------
 
+It is sometimes very tempting to pass `locals()` to the templates, especially if
+you have used a lot of variables, and most of them are used in templates. 
+
+This is almost always a bad idea as,
+
+1. it makes it harder to debug templates, as you do not know what variables are
+available in the template at one glance.
+2. Make it harder to refactor views, as you can not remove unneeded
+variables from the view after refactoring, as you dont know whether they are
+being used in templates.
+
+Solution: Dont use locals(), always explicitly create a dictionary to pass to
+the templates.
     
