@@ -1,4 +1,4 @@
-Welcome to Django gotchas's documentation!
+Welcome to Django gotchas documentation!
 ==========================================
 
 Contents:

@@ -1,0 +1,4 @@
+Django Gotchas is a collections of gotchas which happen commonly when you are working with Django.
+They are some errors which I have made commonly or seen others do, these are not the errors which
+happen because they are hard to reason about, these are those errors which hapen when you close your
+eyes for a moment when coding.
