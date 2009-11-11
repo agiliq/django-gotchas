@@ -15,11 +15,11 @@ Not including RequestContext
 
 Sometime you mean this::
 
-    return render_to_response(request, payload, RequestContext(request))
+    return render_to_response('templates/app/template.html', payload, RequestContext(request))
 
 But write::
 
-    return render_to_response(request, payload,)
+    return render_to_response('templates/app/template.html', payload,)
     
 So any of your data from context processors would not be available. Eg, `media_url`.
 
@@ -27,7 +27,7 @@ Solution:
 
 If you must use this, always be sure why you are doing it this way.
 
-    return render_to_response(request, payload,)
+    return render_to_response('templates/app/template.html', payload,)
     
 Filtering on id
 -------------------
