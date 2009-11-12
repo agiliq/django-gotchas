@@ -68,8 +68,7 @@ Or (Django 1.1 only)
 Template Silencing:
 --------------------
 
-Any empty variable in the templates, is rendered empty in the templates. But then, so also, for errors. Django templates silence many variable errors and render nothing at that position.
-
+Any empty variable, is rendered empty in the templates. But then, so also are errors, rendered empty. Django templates silence many variable errors and render nothing at that position.
 
 Solution:
 
