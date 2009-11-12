@@ -67,8 +67,8 @@ Django does not have object identity, hence any change made to the database
 within obj within magic wont be available in the function.
 
 Solution:
-There is no easy solution to it, but you can keep yourself, but you can keep
-youself from being bitten by this behaviour. a. Pull objects close to
+There is no easy solution to it, but you can keep
+youself from being bitten by this behaviour. Pull objects close to
 their use. Keep track of when an used object is updated and pull them again from
 the database if updated.
     
