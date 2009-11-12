@@ -53,7 +53,7 @@ Always save as::
 
     def forms.save(self, *args, **kwargs):
         ...
-        super(FormCLass, self).save(*args, **kwargs)
+        super(FormClass, self).save(*args, **kwargs)
 
 
 

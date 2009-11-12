@@ -65,6 +65,18 @@ Or (Django 1.1 only)
     {% endfor %}
     </ul>
 
+Template Silencing:
+--------------------
+
+Any empty variable in the templates, is rendered empty in the templates. But then, so also, for errors. Django templates silence many variable errors and render nothing at that position.
 
 
+Solution:
 
+Set the template string to a convenient value, when the template string is invalid, during development. 
+
+A setting as follows, will help:
+
+TEMPLATE_STRING_IF_INVALID = '{{ %s }}'
+
+Tip: This could be one of the settings in your `localsettings`, or atleast, one of those conditions within, `if DEBUG:` 
