@@ -12,6 +12,7 @@ Contents:
    forms
    models
    templates
+   contrib
 
 Indices and tables
 ==================
