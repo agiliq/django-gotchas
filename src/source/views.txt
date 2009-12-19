@@ -38,7 +38,7 @@ A common view function:
         Post.objects.get(id = id)
         
 `id` is a builtin in Python and overriding that is probably a bad idea. But this
-happens commonly as Django names the tables PK `id`.
+happens commonly as Django names the table's PK `id`.
 
 Solution:
 
@@ -61,6 +61,6 @@ available in the template at one glance.
 variables from the view after refactoring, as you dont know whether they are
 being used in templates.
 
-Solution: Dont use locals(), always explicitly create a dictionary to pass to
+Solution: Don't use locals(), always explicitly create a dictionary to pass to
 the templates.
     

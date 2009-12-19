@@ -31,7 +31,7 @@ A common pattern is::
     </ul>
 
 This doesnot handle an empty queryset, and will create a empty `<ul></ul>`,
-which migth be visible and break your design depending on your css.
+which might be visible and break your design depending on your css.
 
 
 Solution:
@@ -68,7 +68,8 @@ Or (Django 1.1 only)
 Template Silencing:
 --------------------
 
-Any empty variable, is rendered empty in the templates. But then, so also are errors, rendered empty. Django templates silence many variable errors and render nothing at that position.
+Any empty variable, is rendered empty in the templates. But then errors are rendered empty as well.
+Django templates silence many variable errors and render nothing at that position.
 
 Solution:
 
@@ -78,4 +79,6 @@ A setting as follows, will help:
 
 TEMPLATE_STRING_IF_INVALID = '{{ %s }}'
 
-Tip: This could be one of the settings in your `localsettings`, or atleast, one of those conditions within, `if DEBUG:` 
+Tip: This could be one of the settings in your `localsettings`, or atleast, one of those conditions within, `if DEBUG:`
+
+Warning: The breaks the admin design.

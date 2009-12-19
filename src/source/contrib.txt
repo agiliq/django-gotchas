@@ -13,7 +13,8 @@ Manually Authenticating a User:
 		have to reauthenticate on every request.
 	    """
 
-login takes request and the user object. However, passing a standard user object and a request, doesn't log the user in, when logging in manually, because `authenticate()` sets an extra argument on the user object, that is used for logging in.
+login takes request and the user object. However, passing a standard user object and a request, doesn't log the user in,
+when logging in manually, because `authenticate()` sets an extra argument on the user object, that is used for logging in.
 
 Solution:
 
