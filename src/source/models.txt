@@ -4,7 +4,7 @@ Models
 
 Not adding a max_length to models.CharField
 ----------------------------------------------
-If you do not add a max_lenth to char fields your model will not validate.
+If you do not add a max_length to CharFields your models will not validate.
 
 Solution:
 
@@ -18,14 +18,14 @@ for a unique key, this has a potential to raise `ModelClass.MultipleObjectsRetur
 and `ModelClass.DoesNotExist`. This needs to be handled.
 
 Solution:
-If one of the query crteria is on an unique field, put it in a `try: .. except ModelClass.DoesNotExits:..`.
+If one of the query criteria is on an unique field, put it in a `try: .. except ModelClass.DoesNotExits:..`.
 If there criteria has no unique field, handle both `DoesNotExist` and `MultipleObjectsReturned`.
-In a view function, use django.shortcuts.get_object_or_404(ModelClass, criteria = criteria)
+In a view function use django.shortcuts.get_object_or_404(ModelClass, criteria = criteria)
  
 
 Overriding .save()
 ------------------------
-Most of the times you would be using  `model_obj.save()` without any parameters,
+Most of the times you would be using `model_obj.save()` without any parameters,
 so you may override `.save` as::
 
     def save(self):

@@ -5,7 +5,7 @@ Contrib
 Manually Authenticating a User:
 ---------------------------------
 
-`django.contrib.auth` defines a method named `login`, with the following signature (in the file `__iniit__`):
+`django.contrib.auth` defines a method named `login`, with the following signature (in the file `__init__.py`)::
 
 	def login(request, user):
 		"""
@@ -18,8 +18,8 @@ when logging in manually, because `authenticate()` sets an extra argument on the
 
 Solution:
 
-	When loggining in the user manually, first use the authenticate method.
+When loggining in the user manually, first use the authenticate method.::
 	
-    user_auth = authenticate(username=new_user.username,password=pw1)
-    login(request,user_auth)
+    user_auth = authenticate(username=new_user.username, password=pw1)
+    login(request, user_auth)
 
