@@ -15,7 +15,7 @@ This is a common idiom in a view.::
         payload = {'form':form}
         return render_to_response(...)
         
-Now supoose we edited our form class to::
+Now suppose we edited our form class to::
 
     class FormClass(forms.Form):
         def __init__(self, user = None, *args, **kwargs):
