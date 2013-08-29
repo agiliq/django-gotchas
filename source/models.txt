@@ -10,6 +10,13 @@ Solution:
 
 Add a max_length. If you want a field with unlimited length, use a TextField.
 
+Adding null=True on subclasses of CharField
+---------------------------------------------
+
+Read `about null <https://docs.djangoproject.com/en/dev/ref/models/fields/#null>`_ to find out why null=True should not be used for CharField.
+Often people keep this in mind but still use null=True on fields like EmailField, SlugField etc. Note that these fields are subclasses of
+CharField and hence not making them as null applies to these fields too.
+
 Not handling for ModelClass.DoesNotExist and ModelClass.MultipleObjectsReturned
 ---------------------------------------------------------------------------------
 
