@@ -54,3 +54,26 @@ Always save as::
     def forms.save(self, *args, **kwargs):
         ...
         super(FormClass, self).save(*args, **kwargs)
+
+
+Not calling superclass __init__
+---------------------------------
+
+You might want to change the widget of a particular form field and this can be
+done by overriding Form's __init__.::
+
+    from django.contrib.admin.widgets import AdminFileWidget
+
+    class FormClass(forms.ModelForm):
+
+        class Meta:
+            model = Profile
+
+        def __init__(self, *args, **kwargs):
+            self.fields['picture'].widget = AdminFilewidget() #Gotcha
+
+self.fields is populated after __init__ of ModelForm has executed. So, make sure to call superclass __init__ before accessing self.fields.::
+
+        def __init__(self, *args, **kwargs):
+            super(FormClass, self).__init__(*args, **kwargs)
+            self.fields['picture'].widget = AdminFilewidget()
