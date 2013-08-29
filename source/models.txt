@@ -71,10 +71,3 @@ There is no easy solution to it, but you can keep
 youself from being bitten by this behaviour. Pull objects close to
 their use. Keep track of when an used object is updated and pull them again from
 the database if updated.
-    
-
-
-
-
-
-
