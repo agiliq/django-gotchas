@@ -22,4 +22,3 @@ When loggining in the user manually, first use the authenticate method.::
 	
     user_auth = authenticate(username=new_user.username, password=pw1)
     login(request, user_auth)
-
