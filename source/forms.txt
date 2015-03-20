@@ -77,3 +77,30 @@ self.fields is populated after __init__ of ModelForm has executed. So, make sure
         def __init__(self, *args, **kwargs):
             super(FormClass, self).__init__(*args, **kwargs)
             self.fields['picture'].widget = AdminFilewidget()
+
+
+Dynamic initial values.
+-----------------------------------------
+To set default value for a form field in `__init__` mehtod, 
+it is often (wrongly) set using fields initial value::
+
+   class AdvancedForm(forms.Form):
+   
+        def __init__(self, *args, **kwargs):
+            super().__init__(*args, **kwargs)
+            self.fields['name'].initial = 'override'  # gotcha
+            
+            name=forms.CharField(max_length=10) 
+  
+This won't work if form has some initial value, 
+for example `f = AdvancedForm(initial={'name': 'precedence'})`
+
+Solution:
+
+Always override form initial value instead of field initial value as it has high precedence::
+
+   class AdvancedForm(forms.Form):
+      
+       def __init__(self, *args, **kwargs):
+            super().__init__(*args, **kwargs)
+            self.initial['name'] = 'override'
