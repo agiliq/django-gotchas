@@ -2,8 +2,8 @@
 Forms
 ===================
 
-request.POST binding to wrong parameter in forms
----------------------------------------------------
+request.POST binding to wrong parameter in forms:
+-------------------------------------------------
 
 This is a common idiom in a view.::
 
@@ -30,15 +30,16 @@ Rewrite the gotcha line as
     form=FormClass(data=request.POST)
     
 
-Using form.cleaned_data before calling form.is_valid
--------------------------------------------------------
+Using form.cleaned_data before calling form.is_valid:
+-----------------------------------------------------
 
 Even if you are sure your form passes validation, you still need to call
 `is_valid`. `form.cleaned_data` is calculated after `form.is_valid` is called,
 which you probably are using in your `form.save()`.
 
+
 Overriding form.save in ModelForms:
------------------------------------------
+-----------------------------------
 Similar to `models.save`, forms.save are often (wrongly) overriden as `forms.save`::
 
     def forms.save(self):
@@ -56,8 +57,8 @@ Always save as::
         super(FormClass, self).save(*args, **kwargs)
 
 
-Not calling superclass __init__
----------------------------------
+Not calling superclass __init__:
+--------------------------------
 
 You might want to change the widget of a particular form field and this can be
 done by overriding Form's __init__.::
@@ -79,8 +80,8 @@ self.fields is populated after __init__ of ModelForm has executed. So, make sure
             self.fields['picture'].widget = AdminFilewidget()
 
 
-Dynamic initial values.
------------------------------------------
+Dynamic initial values:
+-----------------------
 To set default value for a form field in `__init__` mehtod, 
 it is often (wrongly) set using fields initial value::
 
